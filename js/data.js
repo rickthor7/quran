@@ -27,15 +27,17 @@ $("#set").click(() => {
             // console.log(response.Surah.ayahs.length);
             var a;
             $('.alquran').html('')
+            $('.saatini').html('')
+            $('body').append(`
+                <div class="saatini">Anda Membaca Surah: <strong>${response.Surah.name}</strong></div>
+            `)
             for (a = 0; a < response.Surah.ayahs.length; a++) {
-                // console.log(response.Surah.ayahs[a].ayahText);
-                // $('.name-surah').append(`
-                //     <option value="${response.Surah[a].number}">${response.Surah[a].name}</option>
-                // `);
 
                 $('.alquran').append(`
+                <div class="shadow">
                 <div class="ayat">${response.Surah.ayahs[a].ayahText} <div class="ayat-ke">${response.Surah.ayahs[a].verseId}</div></div>
                 <div class="arti">${response.Surah.ayahs[a].indoText}</div>
+                </div>
             `)
 
             }
@@ -64,11 +66,14 @@ $(() => {
 })
 
 $(".scroll").hide();
+$(".saatini").hide();
 $(window).scroll(function() {
     if ($(this).scrollTop() > 100) {
         $('.scroll').fadeIn();
+        $(".saatini").fadeIn();
     } else {
         $('.scroll').fadeOut();
+        $(".saatini").fadeOut();
     }
 });
 $('.scroll').click(function() {
