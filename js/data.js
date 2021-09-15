@@ -7,7 +7,7 @@ $.ajax({
         for (a = 0; a < response.Surah.length; a++) {
             // console.log(response.Surah[a].name);
             $('.name-surah').append(`
-                <option value="${response.Surah[a].number}">${response.Surah[a].name}</option>
+                <option value="${response.Surah[a].number}">${response.Surah[a].number}. ${response.Surah[a].name}</option>
             `);
 
         }
