@@ -81,3 +81,7 @@ $('.scroll').click(function() {
         scrollTop: 0
     }, 800);
 });
+
+$(document).on('click', '.saatini', function() {
+    $(this).fadeOut()
+})
