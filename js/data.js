@@ -26,17 +26,32 @@ $("#set").click(() => {
         success: ((response) => {
             // console.log(response.Surah.ayahs.length);
             var a;
-            $('.alquran').html('')
+            $('.alquran').html('');
             $('.saatini').html('')
             $('body').append(`
                 <div class="saatini">Anda Membaca Surah: <strong>${response.Surah.name}</strong></div>
-            `)
+                `)
+
+            $('.alquran').removeClass().addClass('alquran id-' + newVal + '')
+
+            var alfatihah = 'id-2';
+            var attaubah = 'id-10';
+            if ($('.alquran').hasClass(alfatihah) || $('.alquran').hasClass(attaubah)) {
+                // console.log('dedi');
+            } else {
+                $('.alquran').append(`
+                    <div class="shadow">
+                        <div class="ayat bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+                        <div class="arti">Dengan nama Allah Yang Maha Pengasih, Maha Penyayang.</div>
+                    </div>
+                `)
+            }
             for (a = 0; a < response.Surah.ayahs.length; a++) {
 
                 $('.alquran').append(`
                 <div class="shadow">
-                <div class="ayat">${response.Surah.ayahs[a].ayahText} <div class="ayat-ke">${response.Surah.ayahs[a].verseId}</div></div>
-                <div class="arti">${response.Surah.ayahs[a].indoText}</div>
+                    <div class="ayat">${response.Surah.ayahs[a].ayahText} <div class="ayat-ke">${response.Surah.ayahs[a].verseId}</div></div>
+                    <div class="arti">${response.Surah.ayahs[a].indoText}</div>
                 </div>
             `)
 
@@ -70,7 +85,7 @@ $(".saatini").hide();
 $(window).scroll(function() {
     if ($(this).scrollTop() > 100) {
         $('.scroll').fadeIn();
-        $(".saatini").fadeIn();
+        // $(".saatini").fadeIn();
     } else {
         $('.scroll').fadeOut();
         $(".saatini").fadeOut();
