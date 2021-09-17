@@ -23,11 +23,21 @@ $("#set").click(() => {
     $.ajax({
         url: url_,
         method: 'GET',
+        beforeSend: function() {
+            $("#loading").show();
+            $('.alquran').hide();
+        },
+        complete: function() {
+            $("#loading").hide();
+            $('.alquran').show();
+        },
         success: ((response) => {
             // console.log(response.Surah.ayahs.length);
             var a;
             $('.alquran').html('');
-            $('.saatini').html('')
+            $('.saatini').html('');
+            $('.judul-title').html('');
+            $('.artinya').html('')
             $('body').append(`
                 <div class="saatini">Anda Membaca Surah: <strong>${response.Surah.name}</strong></div>
                 `)
@@ -46,6 +56,11 @@ $("#set").click(() => {
                     </div>
                 `)
             }
+
+            $('.judul').append(`
+                <h2 class="text-center judul-title"><strong>${response.Surah.name}</strong></h2>
+                <div class="text-center artinya">${response.Surah.translationId}</div>
+            `)
             for (a = 0; a < response.Surah.ayahs.length; a++) {
 
                 $('.alquran').append(`
@@ -59,6 +74,7 @@ $("#set").click(() => {
         })
     })
 })
+
 
 // var id_ = $('.nama-surah').val();
 // var url_ = 'https://kutipanmuslim.com/alqurans/' + id_ + '';
@@ -85,7 +101,7 @@ $(".saatini").hide();
 $(window).scroll(function() {
     if ($(this).scrollTop() > 100) {
         $('.scroll').fadeIn();
-        // $(".saatini").fadeIn();
+        $(".saatini").fadeIn();
     } else {
         $('.scroll').fadeOut();
         $(".saatini").fadeOut();
