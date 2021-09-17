@@ -95,7 +95,7 @@ $("#set").click(() => {
                                         <audio controls>
                                             <source src="${response.Surah.ayahs[a].audio}" type="audio/mp3">
                                         </audio>
-                                        <div class="indo"><i>${response.Surah.ayahs[a].readText}</i></div>
+                                        <div class="indo grey"><i>${response.Surah.ayahs[a].readText}</i></div>
                                         <br>
                                         <div class="indo">${response.Surah.ayahs[a].indoText}</div>
                                         <hr>
