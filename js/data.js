@@ -7,7 +7,7 @@ $.ajax({
         for (a = 0; a < response.Surah.length; a++) {
             // console.log(response.Surah[a].name);
             $('.name-surah').append(`
-                <option value="${response.Surah[a].number}">${response.Surah[a].number}. ${response.Surah[a].name} - (${response.Surah[a].numberOfAyahs} ayat)</option>
+                <option value="${response.Surah[a].number}">${response.Surah[a].number}. ${response.Surah[a].name})</option>
             `);
 
         }
@@ -63,7 +63,7 @@ $("#set").click(() => {
 
             $('.judul').append(`
                 <h2 class="text-center judul-title"><strong>${response.Surah.name}</strong> <strong class="ayat">${response.Surah.asma}</strong></h2>
-                <div class="text-center artinya">${response.Surah.translationId}</div>
+                <div class="text-center artinya">${response.Surah.translationId} - (${response.Surah.numberOfAyahs}) ayat</div>
 
             `)
             for (a = 0; a < response.Surah.ayahs.length; a++) {
